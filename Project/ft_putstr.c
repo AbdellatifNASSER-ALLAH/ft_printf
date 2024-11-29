@@ -6,16 +6,17 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 19:07:30 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/11/27 19:27:39 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:04:25 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
 int	ft_putstr(char *str)
 {
 	int	count;
 	
 	if (!str)
-		return (ft_putstr("(null)"))
+		return (ft_putstr("(null)"));
 	count = 0;
 	while (str[count])
 	{

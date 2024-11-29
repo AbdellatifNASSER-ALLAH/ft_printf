@@ -6,9 +6,10 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 19:04:35 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/11/27 19:07:00 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:02:05 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
 int	ft_putchar(char c)
 {
