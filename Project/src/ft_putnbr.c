@@ -1,43 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 15:15:13 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/11/30 11:44:51 by abdnasse         ###   ########.fr       */
+/*   Created: 2024/11/30 14:11:09 by abdnasse          #+#    #+#             */
+/*   Updated: 2024/11/30 15:26:09 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int	ft_puthex(char c, unsigned int n)
+int	ft_putnbr(int nbr)
 {
-	char	*base;
+	long	n;
+	int	power;
 	int	count;
-	unsigned int	hex;
-	unsigned int	mask;
-	unsigned int	shift;
-
-	mask = 0xf0000000; 
-	base = "0123456789abcdef";
-	if (c == 'X')
-		base = "0123456789ABCDEF";
-	if (n == 0)
-		return (ft_putchar(base[0]));
+	char	c;
+	
+	n = nbr;
 	count = 0;
-	shift = 28;
-	while(mask)
+	if(n < 0)
 	{
-		hex = (n & mask) >> shift;
-		if (hex > 0 || count > 0)
-		{
-			if (ft_putchar(base[hex]) < 0)
-				return (-1);
-			count++;
-		}
-		shift -= 4;
-		mask >>= 4;
+		n = -n;
+		if (ft_putchar('-') < 0)
+			return (-1);
+		count++;
+	}
+	if (n == 0)
+	{
+		if (ft_putchar('0') < 0)
+			return (-1);
+		return (1);
+	}
+	power = ft_ilen(n);
+	while (power--)
+	{
+		c = (n / ft_10power(power)) + 48;
+		if (ft_putchar(c) < 0)
+			return (-1);
+		count++;
+		n %= ft_10power(power);
 	}
 	return (count);
 }
