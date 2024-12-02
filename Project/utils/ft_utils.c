@@ -6,20 +6,18 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 14:44:44 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/11/30 17:12:35 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:32:17 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_utils.h"
 
-int	ft_ilen(int n)
+int	ft_ilen(unsigned int n)
 {
 	int	i;
 
 	i = 0;
 	if (n == 0)
 		return (1);
-	if (n < 0)
-		n = -n;
 	while (n)
 	{
 		i++;
@@ -28,7 +26,7 @@ int	ft_ilen(int n)
 	return (i);
 }
 
-int	ft_10power(int	power)
+int	ft_10power(int power)
 {
 	int	res;
 

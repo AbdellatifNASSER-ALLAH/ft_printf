@@ -13,13 +13,13 @@
 
 int	ft_puthex(char c, unsigned int n)
 {
-	char	*base;
-	int	count;
+	char			*base;
+	int				count;
 	unsigned int	hex;
 	unsigned int	mask;
 	unsigned int	shift;
 
-	mask = 0xf0000000; 
+	mask = 0xf0000000;
 	base = "0123456789abcdef";
 	if (c == 'X')
 		base = "0123456789ABCDEF";
@@ -27,7 +27,7 @@ int	ft_puthex(char c, unsigned int n)
 		return (ft_putchar(base[0]));
 	count = 0;
 	shift = 28;
-	while(mask)
+	while (mask)
 	{
 		hex = (n & mask) >> shift;
 		if (hex > 0 || count > 0)
