@@ -1,11 +1,11 @@
 DIRTEST := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 DIRSRC := $(CURDIR)
 CC = cc
-CFALGS = -Wall -Wextra -Werror
+CFALGS = -Wall -Wextra -Werror -g
 NAME = prog
 LIB = ftprintf
 DIR = $(DIRTEST)Project
-TEST = test.c
+TEST = test.c utils.c
 
 
 all: $(NAME)

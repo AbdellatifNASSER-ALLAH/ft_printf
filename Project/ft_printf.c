@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:44:33 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/02 20:05:04 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:35:04 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -34,7 +34,7 @@ int	f_putformat(va_list ap, const char *p)
 		if (p[i] == '%' && i++)
 			f_specifier(ap, p[i], &count);
 		else
-			count++;
+			count += ft_putchar(p[i]);
 		i++;
 	}
 	return (count);
