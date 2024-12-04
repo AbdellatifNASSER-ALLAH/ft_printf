@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:44:33 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/04 19:09:47 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/12/04 22:07:22 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -31,8 +31,8 @@ int	f_putformat(va_list ap, const char *p)
 	count = 0;
 	while (p[i])
 	{
-		if (p[i] == '%' && i++)
-			f_specifier(ap, p[i], &count);
+		if (p[i] == '%')
+			f_specifier(ap, p[++i], &count);
 		else
 			count += ft_putchar(p[i]);
 		i++;
@@ -52,6 +52,8 @@ void	f_specifier(va_list ap, char c, int *count)
 		*count += ft_putnbr(va_arg(ap, unsigned int));
 	if (c == 'x' || c == 'X' || c == 'p')
 		*count += ft_puthex(c, va_arg(ap, unsigned int));
+	if (c == 'p')
+		*count += ft_puthex(c, va_arg(ap, void *));
 	if (c == '%')
 		*count += ft_putchar('%');
 }
