@@ -2,30 +2,36 @@
 #include <stdio.h>
 #include <limits.h>
 
+int	stdout_to_file(char const *file, ((int)*fun(const char *, ...)), const char *format, ...);
 int main()
 {
-	int x;
+	char *fexp = "exp.txt";
+	char *fres = "res.txt";
+	int i, exp, res;
 
-	x = 0xf0000000;
-	printf(" = %d\nReturn : %d\n", x, ft_puthex('X', x));
-	printf(" = %d\nReturn : %d\n", x, printf("%X", x));
-
-	x = 0;
-	printf(" = %d\nReturn : %d\n", x, ft_puthex('X', x));
-	printf(" = %d\nReturn : %d\n", x, printf("%X", x));
-
-	x = 255; 
-	printf(" = %d\nReturn : %d\n", x, ft_puthex('X', x));
-	printf(" = %d\nReturn : %d\n", x, printf("%X", x));
-
-	x = 305419896;
-	printf(" = %d\nReturn : %d\n", x, ft_puthex('X', x));
-	printf(" = %d\nReturn : %d\n", x, printf("%X", x));
-
-	x = 4095;
-	printf(" = %d\nReturn : %d\n", x, ft_puthex('x', x));
-	printf(" = %d\nReturn : %d\n", x, printf("%x", x));
+	for (i = -128; i < 128; i++)
+	{
+		exp = stdout_to_file(fexp, printf,"char[%d] = %c", i, i);
+		res = stdout_to_file(fres, ft_printf,"char[%d] = %c", i, i);
+	}
 
 	return 0;
 }
 
+int	stdout_to_file(char const *file, ((int)*fun(const char *, ...)), const char *format, ...)
+{
+	FILE *fl = freopen(file, "w", stdout);
+	if (!fl)
+	{
+		perror("failed to open file for redirction of stdout");
+		return (-1);
+	}
+
+	va_list	ap;
+	int	res;
+
+	va_start(ap, format);
+	res = fun(format, ap);
+	va_end(ap);
+	return (res);
+}
