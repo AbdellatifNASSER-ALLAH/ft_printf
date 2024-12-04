@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 15:15:13 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/04 22:35:13 by abdnasse         ###   ########.fr       */
+/*   Created: 2024/12/04 22:13:34 by abdnasse          #+#    #+#             */
+/*   Updated: 2024/12/04 22:45:09 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_puthex(char *base, unsigned int n)
+int	ft_putptr(unsigned long ptr)
 {
-	int				count;
-	unsigned int	hex;
-	unsigned int	mask;
-	unsigned int	shift;
+	int	count;
+	int	check;
 
-	mask = 0xf0000000;
-	if (n == 0)
-		return (ft_putchar(base[0]));
-	count = 0;
-	shift = 28;
-	while (mask)
-	{
-		hex = (n & mask) >> shift;
-		if (hex > 0 || count > 0)
-		{
-			if (ft_putchar(base[hex]) < 0)
-				return (-1);
-			count++;
-		}
-		shift -= 4;
-		mask >>= 4;
-	}
-	return (count);
+	if ((void *)ptr == NULL)
+		return (ft_putstr("(nil)");
+	count = ft_putstr("0x");
+	if (count < 0)
+		return (-1);
 }

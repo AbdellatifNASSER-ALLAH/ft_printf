@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:44:33 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/04 22:07:22 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/12/04 22:38:13 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -50,10 +50,12 @@ void	f_specifier(va_list ap, char c, int *count)
 		*count += ft_putnbr(va_arg(ap, int));
 	if (c == 'u')
 		*count += ft_putnbr(va_arg(ap, unsigned int));
-	if (c == 'x' || c == 'X' || c == 'p')
-		*count += ft_puthex(c, va_arg(ap, unsigned int));
+	if (c == 'x')
+		*count += ft_puthex("0123456789abcdef", va_arg(ap, unsigned int));
+	if (c == 'X')
+		*count += ft_puthex("0123456789ABCDEF", va_arg(ap, unsigned int));
 	if (c == 'p')
-		*count += ft_puthex(c, va_arg(ap, void *));
+		*count += ft_puthex((unsigned long)va_arg(ap, void *));
 	if (c == '%')
 		*count += ft_putchar('%');
 }
