@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_src.h                                           :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 14:15:27 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/02 17:38:25 by abdnasse         ###   ########.fr       */
+/*   Created: 2024/11/27 19:04:35 by abdnasse          #+#    #+#             */
+/*   Updated: 2024/11/29 17:02:05 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#ifndef FT_SRC_H
-# define FT_SRC_H
-
-int	ft_putchar(char c);
-int	ft_puthex(char c, unsigned int n);
-int	ft_putnbr(int n);
-int	ft_putunbr(unsigned int n);
-int	ft_putstr(const char *str);
-
-#endif
+int	ft_putchar(char c)
+{
+	return (write(1, &c, 1));
+}

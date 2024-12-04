@@ -1,19 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 14:26:18 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/02 15:33:33 by abdnasse         ###   ########.fr       */
+/*   Created: 2024/11/30 14:11:09 by abdnasse          #+#    #+#             */
+/*   Updated: 2024/12/02 15:25:14 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
+int	ft_putnbr(int nbr)
+{
+	long	n;
+	int		mask;
+	int		count;
 
-int	ft_ilen(unsigned int n);
-int	ft_10power(int power);
-
-#endif
+	n = nbr;
+	count = 0;
+	if (n < 0)
+	{
+		n = -n;
+		if (ft_putchar('-') < 0)
+			return (-1);
+		count++;
+	}
+	mask = ft_10power(ft_ilen(n) - 1);
+	while (mask)
+	{
+		if (ft_putchar((n / mask) + 48) < 0)
+			return (-1);
+		count++;
+		n %= mask;
+		mask /= 10;
+	}
+	return (count);
+}
