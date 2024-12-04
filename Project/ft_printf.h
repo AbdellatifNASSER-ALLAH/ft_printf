@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:44:42 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/02 17:41:52 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:08:55 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int		f_putformat(va_list ap, const char *p);
 void	f_specifier(va_list ap, char c, int *count);
 int	ft_putchar(char c);
 int	ft_puthex(char c, unsigned int n);
-int	ft_putnbr(int n);
-int	ft_putunbr(unsigned int n);
+int	ft_putnbr(long n);
 int	ft_putstr(const char *str);
 int	ft_ilen(unsigned int n);
 int	ft_10power(int power);

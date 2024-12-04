@@ -6,12 +6,12 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 14:11:09 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/02 15:25:14 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:09:01 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putnbr(int nbr)
+int	ft_putnbr(long nbr)
 {
 	long	n;
 	int		mask;
