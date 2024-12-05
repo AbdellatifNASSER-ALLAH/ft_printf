@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:44:33 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/04 22:38:13 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:31:09 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -26,36 +26,51 @@ int	f_putformat(va_list ap, const char *p)
 {
 	int	i;
 	int	count;
+	int	check;
 
 	i = 0;
 	count = 0;
 	while (p[i])
 	{
 		if (p[i] == '%')
-			f_specifier(ap, p[++i], &count);
+		{
+			check = f_specifier(ap, p[++i]);
+			if (check < 0)
+				return (-1);
+			count += check;
+		}
 		else
-			count += ft_putchar(p[i]);
+		{
+			if (ft_putchar(p[i]) < 0)
+				return (-1);
+			count++;
+		}
 		i++;
 	}
 	return (count);
 }
 
-void	f_specifier(va_list ap, char c, int *count)
+int	f_specifier(va_list ap, char c)
 {
+	unsigned long	ptr;
+
 	if (c == 'c')
-		*count += ft_putchar(va_arg(ap, int));
+		return (ft_putchar(va_arg(ap, int)));
 	if (c == 's')
-		*count += ft_putstr(va_arg(ap, const char *));
+		return (ft_putstr(va_arg(ap, const char *)));
 	if (c == 'd' || c == 'i')
-		*count += ft_putnbr(va_arg(ap, int));
+		return (ft_putnbr(va_arg(ap, int)));
 	if (c == 'u')
-		*count += ft_putnbr(va_arg(ap, unsigned int));
+		return (ft_putnbr(va_arg(ap, unsigned int)));
 	if (c == 'x')
-		*count += ft_puthex("0123456789abcdef", va_arg(ap, unsigned int));
+		return (ft_puthex("0123456789abcdef", va_arg(ap, unsigned int)));
 	if (c == 'X')
-		*count += ft_puthex("0123456789ABCDEF", va_arg(ap, unsigned int));
+		return (ft_puthex("0123456789ABCDEF", va_arg(ap, unsigned int)));
 	if (c == 'p')
-		*count += ft_puthex((unsigned long)va_arg(ap, void *));
+	{
+		ptr = va_arg(ap, void *);
+		return (ft_putptr("0123456789abcdef", ptr));
+	}
 	if (c == '%')
-		*count += ft_putchar('%');
+		return (ft_putchar('%'));
 }
