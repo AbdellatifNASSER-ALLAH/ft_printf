@@ -19,12 +19,12 @@
 int		ft_printf(const char *format, ...);
 int		f_putformat(va_list ap, const char *p);
 void	f_specifier(va_list ap, char c, int *count);
-int	ft_putchar(char c);
-int	ft_puthex(char *base, unsigned int n);
-int	ft_putptr(unsigned long ptr);
-int	ft_putnbr(long n);
-int	ft_putstr(const char *str);
-int	ft_ilen(unsigned int n);
-int	ft_10power(int power);
+int		ft_putchar(char c);
+int		ft_puthex(char *base, unsigned int n);
+int		ft_putptr(unsigned long ptr);
+int		ft_putnbr(long n);
+int		ft_putstr(const char *str);
+int		ft_ilen(unsigned int n);
+int		ft_10power(int power);
 
 #endif
