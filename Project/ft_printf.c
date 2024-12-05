@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:44:33 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/05 14:31:09 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/12/05 20:08:26 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -15,7 +15,9 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int		count;
-
+	
+	if (!format)
+		return (-1);
 	va_start(ap, format);
 	count = f_putformat(ap, format);
 	va_end(ap);
