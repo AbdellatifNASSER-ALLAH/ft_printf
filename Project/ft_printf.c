@@ -68,9 +68,10 @@ int	f_specifier(va_list ap, char c)
 		return (ft_puthex("0123456789ABCDEF", va_arg(ap, unsigned int)));
 	if (c == 'p')
 	{
-		ptr = va_arg(ap, void *);
+		ptr = (unsigned long)va_arg(ap, void *);
 		return (ft_putptr("0123456789abcdef", ptr));
 	}
 	if (c == '%')
 		return (ft_putchar('%'));
+	return (0);
 }
