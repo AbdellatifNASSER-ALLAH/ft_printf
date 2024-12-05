@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 22:13:34 by abdnasse          #+#    #+#             */
-/*   Updated: 2024/12/05 14:12:33 by abdnasse         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:58:01 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -28,7 +28,7 @@ int	ft_putptr(char *base, unsigned long ptr)
 	while (mask)
 	{
 		hex = (ptr & mask) >> shift;
-		if (hex > 0 || count > 0)
+		if (hex > 0 || count > 2)
 		{
 			if (ft_putchar(base[hex]) < 0)
 				return (-1);
